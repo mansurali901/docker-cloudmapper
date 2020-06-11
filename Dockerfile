@@ -16,12 +16,12 @@ WORKDIR /opt/cloudmapper
 # By default python buffers output, which prevents output to docker logs.  This
 # disables the output buffering so logging works as expected.
 ENV PYTHONUNBUFFERED=0
-
+RUN apk update
+RUN apk add --update --no-cache build-base python3-dev python3 libffi-dev libressl-dev bash git gettext curl
 RUN apk --no-cache --virtual build-dependencies add \
 autoconf \
 automake \
 libtool \
-python-dev \
 jq \
 g++ \
 make \
